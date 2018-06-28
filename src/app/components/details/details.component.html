@@ -1,0 +1,36 @@
+<div style="margin-top:5em" class="main container">
+  <h1 style="text-align:center">
+    {{ movieDetails.original_title }}
+  </h1>
+  <hr>
+<div style="float:left;" class="container col-sm-8 clearfix">
+<div class="card bg-dark text-white col">
+  <img class="card-img" src="http://image.tmdb.org/t/p/w500{{movieDetails.backdrop_path}}" alt="Card image">
+
+</div>
+</div>
+<div class="row">
+  <div class="col-sm">
+    <h3>Sipnosis</h3><br>
+    <p>
+      {{ movieDetails.overview }}
+    </p>
+    Popularidad:&nbsp;
+    <span class="badge badge-pill badge-primary">
+      {{ movieDetails.popularity | percent }}
+    </span><br>
+    Genero:&nbsp;
+    <span
+    *ngFor="let genres of movieDetails.genres"
+    class="badge badge-pill badge-info">
+      {{ genres.name }}
+  </span>
+  <br>
+  <br>
+  <a target="_blank" class="btn btn-outline-primary" [href]="movieDetails.homepage">
+      Visitar la pelicula
+  </a>
+  </div>
+</div>
+
+</div>

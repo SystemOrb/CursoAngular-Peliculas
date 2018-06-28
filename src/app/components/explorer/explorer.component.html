@@ -1,0 +1,36 @@
+<div style="margin-top:5em" class="main container">
+<nav class="navbar navbar-dark bg-light">
+  <form  #reference="ngForm"  class="form-inline">
+    <input
+    required
+    class="form-control" type="search"
+    name="explorer"
+    [(ngModel)]="search"
+    [ngModelOptions]="{standalone: true}"
+    (keyup)="searchMovies(search)"
+    placeholder="Buscar una pelicula.."
+    aria-label="Search">
+    <button
+    [disabled]="!reference.valid"
+    class="btn btn-outline-success my-2 my-sm-0"
+    (click)="searchMovies(search)"
+    (keyup.enter)="searchMovies(search)"
+    type="submit">Buscar</button>
+  </form>
+</nav>
+</div>
+<hr>
+<div *ngIf="movies.arrayMovies" class="row">
+  <div *ngFor="let movies of movies.arrayMovies" class="col-sm-6">
+    <div class="card">
+      <img class="card-img-top" [src]="movies | imageValidator" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ movies.original_title }}</h5>
+        <p class="card-text">{{ movies.overview }}</p>
+        <a
+        [routerLink]="['/details',movies.id]"
+        class="btn btn-outline-primary btn-block">Visitar la pelicula</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="jumbotron">
+  <h1 class="display-4">PelisMovie</h1>
+  <p class="lead"></p>
+  <hr class="my-4">
+</div>
+<div style="margin-top:5em" class="container">
+  <h1>Más populares</h1>
+  <br>
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="http://image.tmdb.org/t/p/w500{{firstItem.backdrop_path}}" alt="First slide">
+      </div>
+
+      <div
+      *ngFor="let populars of popular"
+      class="carousel-item">
+        <img class="d-block w-100" src="http://image.tmdb.org/t/p/w500{{populars.backdrop_path}}" alt="Third slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ populars.original_title }}</h5>
+          <p> {{ populars.overview }} </p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <br>
+  <h1>
+    En cartelera
+  </h1>
+  <div class="row">
+    <div *ngFor="let streaming of streamingNow" class="col-sm-6">
+      <div class="card">
+        <img class="card-img-top" src="http://image.tmdb.org/t/p/w500{{streaming.backdrop_path}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ streaming.original_title }}</h5>
+          <p class="card-text">{{ streaming.overview }}</p>
+          <a
+          [routerLink]="['/details',streaming.id]"
+          class="btn btn-outline-primary btn-block">Visitar la pelicula</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <h1>
+    Cine para niños
+  </h1>
+  <div style="margin-left:8em" class="col-md-6 text-center">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li *ngFor="let kids of popularKids;let i = index;"
+      data-target="#carouselExampleIndicators"
+      data-slide-to="0"
+      class=""></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="http://image.tmdb.org/t/p/w500{{firstKidItem.poster_path}}" alt="First slide">
+      </div>
+      <div *ngFor="let kids of popularKids" class="carousel-item">
+        <img class="d-block w-100" src="http://image.tmdb.org/t/p/w500{{kids.poster_path}}" alt="Third slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+</div>
+<!--http://image.tmdb.org/t/p/w500{{populars.backdrop_path}}-->
